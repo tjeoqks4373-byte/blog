@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>성민안경 | 당신의 선명한 일상을 디자인합니다</title>
+    <title>주식회사 비전컨테이너 | 복음을 실어나르는 회사</title>
     
-    <!-- Pretendard 폰트 로드 -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    
-    <!-- FontAwesome 아이콘 로드 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind CSS CDN 및 커스텀 설정 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -21,16 +17,15 @@
                         sans: ['Pretendard', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#007BFF', // 포인트 컬러 (신뢰의 블루)
-                        light: '#F8F9FA',   // 아주 연한 그레이 (배경 구분용)
-                        dark: '#333333',    // 푸터 배경
+                        primary: '#007BFF',
+                        light: '#F8F9FA',
+                        dark: '#333333',
                     }
                 }
             }
         }
     </script>
 
-    <!-- 사용자 정의 스타일 (부드러운 스크롤 및 탭 전환 효과) -->
     <style>
         html {
             scroll-behavior: smooth;
@@ -38,7 +33,6 @@
         .tab-pane {
             transition: opacity 0.4s ease-in-out;
         }
-        /* 헤더 그림자 전환을 위한 스타일 */
         #navbar {
             transition: box-shadow 0.3s ease;
         }
@@ -49,24 +43,22 @@
 </head>
 <body class="font-sans text-gray-800 antialiased bg-white">
 
-    <!-- 1. Header (네비게이션) -->
+    <!-- Header -->
     <header id="navbar" class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- 로고 -->
                 <div class="flex-shrink-0">
                     <a href="#hero" class="text-2xl font-bold text-primary tracking-tight">
-                        성민안경
+                        주식회사 비전컨테이너
                     </a>
                 </div>
-                <!-- 데스크톱 메뉴 -->
                 <nav class="hidden md:flex space-x-8">
                     <a href="#about" class="text-gray-600 hover:text-primary font-medium transition-colors">About</a>
                     <a href="#products" class="text-gray-600 hover:text-primary font-medium transition-colors">Products</a>
                     <a href="#services" class="text-gray-600 hover:text-primary font-medium transition-colors">Services</a>
-                    <a href="#booking" class="text-gray-600 hover:text-primary font-medium transition-colors">Booking</a>
+                    <a href="#customer" class="text-gray-600 hover:text-primary font-medium transition-colors">Customer</a>
+                    <a href="#booking" class="text-gray-600 hover:text-primary font-medium transition-colors">Inquiry</a>
                 </nav>
-                <!-- 모바일 메뉴 버튼 -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
@@ -74,411 +66,264 @@
                 </div>
             </div>
         </div>
-        <!-- 모바일 메뉴 드롭다운 -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#about" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md font-medium">About</a>
                 <a href="#products" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md font-medium">Products</a>
                 <a href="#services" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md font-medium">Services</a>
-                <a href="#booking" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md font-medium">Booking</a>
+                <a href="#customer" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md font-medium">Customer</a>
+                <a href="#booking" class="block px-3 py-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded-md font-medium">Inquiry</a>
             </div>
         </div>
     </header>
 
-    <!-- 2. Hero Section (메인) -->
+    <!-- Hero -->
     <section id="hero" class="relative w-full h-screen flex items-center justify-center pt-20">
-        <!-- 배경 이미지 (어두운 오버레이 적용) -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&q=80&w=1920" alt="안경을 쓴 환하게 웃는 고객" class="w-full h-full object-cover object-center" />
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?auto=format&fit=crop&q=80&w=1920" alt="항만에 적재된 수출용 컨테이너" class="w-full h-full object-cover object-center" />
             <div class="absolute inset-0 bg-black/60"></div>
         </div>
-        <!-- 중앙 콘텐츠 -->
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 tracking-tight">
-                당신의 선명한 일상을<br />디자인합니다. <span class="text-primary font-extrabold">성민안경</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 tracking-tight break-keep">
+                복음을 실어나르는 회사<br />
+                <span class="text-primary font-extrabold mt-2 inline-block">주식회사 비전컨테이너</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light">
-                전문적인 검안과 정교한 피팅으로 완벽한 시야를 찾아드립니다.
+            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light break-keep">
+                신뢰할 수 있는 품질의 중고 수출용·해상용 컨테이너를 합리적인 가격에 제공합니다.
             </p>
             <a href="#booking" class="inline-block bg-primary text-white font-semibold text-lg px-8 py-4 rounded-full hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                방문 예약하기
+                컨테이너 견적 문의
             </a>
         </div>
     </section>
 
-    <!-- 3. About Us (소개) -->
+    <!-- About -->
     <section id="about" class="py-24 bg-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">About Us</h2>
                 <div class="w-16 h-1 bg-primary mx-auto"></div>
-                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">고객의 눈 건강을 최우선으로 생각하며, 원칙과 신뢰를 바탕으로 운영합니다.</p>
+                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">고객의 물류 환경과 용도에 최적화된 컨테이너 솔루션을 원칙과 신뢰를 바탕으로 제안합니다.</p>
             </div>
-            <!-- 3단 그리드 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- 항목 1 -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
                     <div class="w-16 h-16 mx-auto bg-blue-50 text-primary rounded-full flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-user-md"></i>
+                        <i class="fas fa-ship"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">전문 안경사</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        15년 경력의 국가면허 소지 안경사가 직접 1:1 맞춤 상담 및 정밀 시력 검사를 진행합니다.
-                    </p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">컨테이너 전문 컨설팅</h3>
+                    <p class="text-gray-600 leading-relaxed">전문화된 네트워크로 용도에 맞는 최적의 컨테이너를 상담해 드립니다.</p>
                 </div>
-                <!-- 항목 2 -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
                     <div class="w-16 h-16 mx-auto bg-blue-50 text-primary rounded-full flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-microscope"></i>
+                        <i class="fas fa-check-double"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">최신 검안 장비</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        오차 없는 정밀 측정. 대학병원급 최신식 3D 검안 기기를 도입하여 눈의 미세한 굴절 이상까지 잡아냅니다.
-                    </p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">엄격한 품질 검수</h3>
+                    <p class="text-gray-600 leading-relaxed">구조적 안전성과 방수 상태를 철저히 검사하여 최상의 제품만 납품합니다.</p>
                 </div>
-                <!-- 항목 3 -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
                     <div class="w-16 h-16 mx-auto bg-blue-50 text-primary rounded-full flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-tags"></i>
+                        <i class="fas fa-won-sign"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">정직한 가격</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        유통 과정을 최소화하여 거품을 뺀 정직한 가격 정찰제 운영 철학을 지키고 있습니다.
-                    </p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">투명한 정찰제</h3>
+                    <p class="text-gray-600 leading-relaxed">거품을 뺀 합리적인 가격과 투명한 견적 시스템을 통해 고객의 신뢰를 얻습니다.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Products (제품 갤러리) -->
+    <!-- Products -->
     <section id="products" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Products</h2>
                 <div class="w-16 h-1 bg-primary mx-auto"></div>
-                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">디자인과 기능을 모두 만족시키는 다양한 컬렉션을 만나보세요.</p>
             </div>
 
-            <!-- 탭 메뉴 -->
             <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button onclick="changeTab('frames')" id="tab-frames" class="tab-btn px-6 py-2 rounded-full border-2 border-primary bg-primary text-white font-semibold transition-colors">트렌디 안경테</button>
-                <button onclick="changeTab('sunglasses')" id="tab-sunglasses" class="tab-btn px-6 py-2 rounded-full border-2 border-gray-200 text-gray-500 hover:border-primary hover:text-primary font-semibold transition-colors">선글라스</button>
-                <button onclick="changeTab('lenses')" id="tab-lenses" class="tab-btn px-6 py-2 rounded-full border-2 border-gray-200 text-gray-500 hover:border-primary hover:text-primary font-semibold transition-colors">기능성 렌즈</button>
+                <button onclick="changeTab('dry')" id="tab-dry" class="tab-btn px-6 py-2 rounded-full border-2 border-primary bg-primary text-white font-semibold">주요 컨테이너</button>
+                <button onclick="changeTab('reefer')" id="tab-reefer" class="tab-btn px-6 py-2 rounded-full border-2 border-gray-200 text-gray-500">냉동/냉장 컨테이너</button>
+                <button onclick="changeTab('special')" id="tab-special" class="tab-btn px-6 py-2 rounded-full border-2 border-gray-200 text-gray-500">특수/개조 컨테이너</button>
             </div>
 
-            <!-- 탭 콘텐츠: 트렌디 안경테 -->
-            <div id="content-frames" class="tab-pane opacity-100">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <div class="group relative overflow-hidden rounded-xl">
-                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&q=80&w=800" alt="안경테 1" class="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="font-bold">Classic Round</span>
-                        </div>
+            <div id="content-dry" class="tab-pane opacity-100">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-white rounded-xl shadow-sm border overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?auto=format&fit=crop&q=80&w=800" class="w-full h-48 object-cover">
+                        <div class="p-4"><h4 class="font-bold">드라이 컨테이너</h4></div>
                     </div>
-                    <div class="group relative overflow-hidden rounded-xl">
-                        <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&q=80&w=800" alt="안경테 2" class="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="font-bold">Titanium Square</span>
-                        </div>
+                    <div class="bg-white rounded-xl shadow-sm border overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=800" class="w-full h-48 object-cover">
+                        <div class="p-4"><h4 class="font-bold">탱크 컨테이너</h4></div>
                     </div>
-                    <div class="group relative overflow-hidden rounded-xl">
-                        <img src="https://images.unsplash.com/photo-1589642380614-4a8c2147b857?auto=format&fit=crop&q=80&w=800" alt="안경테 3" class="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="font-bold">Vintage Horn</span>
-                        </div>
+                    <div class="bg-white rounded-xl shadow-sm border overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1585713181935-d5f62cece8fa?auto=format&fit=crop&q=80&w=800" class="w-full h-48 object-cover">
+                        <div class="p-4"><h4 class="font-bold">냉동 컨테이너</h4></div>
                     </div>
                 </div>
             </div>
-
-            <!-- 탭 콘텐츠: 선글라스 -->
-            <div id="content-sunglasses" class="tab-pane hidden opacity-0">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <div class="group relative overflow-hidden rounded-xl">
-                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&q=80&w=800" alt="선글라스 1" class="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-500 filter grayscale">
-                        <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="font-bold">Summer Collection</span>
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-xl">
-                        <img src="https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&q=80&w=800" alt="선글라스 2" class="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="font-bold">Sports Polarized</span>
-                        </div>
-                    </div>
-                    <div class="group relative overflow-hidden rounded-xl">
-                        <img src="https://images.unsplash.com/photo-1508296695146-257a814050b4?auto=format&fit=crop&q=80&w=800" alt="선글라스 3" class="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="font-bold">Retro Aviator</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 탭 콘텐츠: 기능성 렌즈 -->
-            <div id="content-lenses" class="tab-pane hidden opacity-0">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                    <div class="bg-gray-50 rounded-xl p-8 flex items-center space-x-6">
-                        <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-primary text-3xl shadow-sm flex-shrink-0">
-                            <i class="fas fa-laptop"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">블루라이트 차단 렌즈</h4>
-                            <p class="text-gray-600">디지털 기기 사용이 많은 현대인을 위한 청색광 완벽 차단. 눈의 피로를 최소화합니다.</p>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-xl p-8 flex items-center space-x-6">
-                        <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-primary text-3xl shadow-sm flex-shrink-0">
-                            <i class="fas fa-sun"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">자외선 변색 렌즈</h4>
-                            <p class="text-gray-600">실내에서는 투명하게, 야외에서는 자외선 양에 따라 색상이 변하여 눈을 보호합니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="content-reefer" class="tab-pane hidden opacity-0 py-10 text-center text-gray-500">준비 중입니다.</div>
+            <div id="content-special" class="tab-pane hidden opacity-0 py-10 text-center text-gray-500">준비 중입니다.</div>
         </div>
     </section>
 
-    <!-- 5. Services (서비스) -->
+    <!-- Services -->
     <section id="services" class="py-24 bg-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
-                <div class="w-16 h-1 bg-primary mx-auto"></div>
-                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">단순한 판매를 넘어, 고객의 라이프스타일에 맞춘 시력 케어 솔루션을 제공합니다.</p>
-            </div>
-
-            <!-- 검안 프로세스 (Step-by-step) -->
-            <div class="mb-20">
-                <h3 class="text-2xl font-bold text-center mb-10 text-gray-800">체계적인 검안 프로세스</h3>
-                <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 md:space-x-4 relative">
-                    <!-- 배경 연결선 (데스크톱 전용) -->
-                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-10 transform -translate-y-1/2"></div>
-                    
-                    <!-- Step 1 -->
-                    <div class="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100 w-full md:w-1/4 z-10">
-                        <div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mb-4">1</div>
-                        <h4 class="font-bold text-lg mb-2">시력 검사</h4>
-                        <p class="text-sm text-gray-500 text-center">최신 장비를 통한 정밀 측정</p>
-                    </div>
-                    <!-- 화살표 (모바일 전용) -->
-                    <div class="md:hidden text-gray-300"><i class="fas fa-chevron-down"></i></div>
-                    
-                    <!-- Step 2 -->
-                    <div class="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100 w-full md:w-1/4 z-10">
-                        <div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mb-4">2</div>
-                        <h4 class="font-bold text-lg mb-2">라이프스타일 상담</h4>
-                        <p class="text-sm text-gray-500 text-center">직업 및 생활 습관 분석</p>
-                    </div>
-                    <!-- 화살표 (모바일 전용) -->
-                    <div class="md:hidden text-gray-300"><i class="fas fa-chevron-down"></i></div>
-
-                    <!-- Step 3 -->
-                    <div class="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100 w-full md:w-1/4 z-10">
-                        <div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mb-4">3</div>
-                        <h4 class="font-bold text-lg mb-2">맞춤 렌즈 추천</h4>
-                        <p class="text-sm text-gray-500 text-center">최적의 렌즈 설계 제안</p>
-                    </div>
-                    <!-- 화살표 (모바일 전용) -->
-                    <div class="md:hidden text-gray-300"><i class="fas fa-chevron-down"></i></div>
-
-                    <!-- Step 4 -->
-                    <div class="flex flex-col items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100 w-full md:w-1/4 z-10">
-                        <div class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mb-4">4</div>
-                        <h4 class="font-bold text-lg mb-2">정밀 피팅</h4>
-                        <p class="text-sm text-gray-500 text-center">얼굴형에 맞춘 편안한 교정</p>
-                    </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-16">Service Process</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-primary text-2xl font-bold mb-2">01</div>
+                    <h4 class="font-bold">상담 및 견적</h4>
                 </div>
-            </div>
-
-            <!-- 개인별 피팅 서비스 -->
-            <div class="bg-white rounded-2xl p-10 shadow-sm border border-gray-100">
-                <div class="text-center mb-8">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">개인별 정밀 피팅 서비스</h3>
-                    <p class="text-lg text-primary font-semibold">
-                        "고객의 미세한 특징까지 맞춘 세밀한 피팅으로 차별화된 만족감을 약속합니다."
-                    </p>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-primary text-2xl font-bold mb-2">02</div>
+                    <h4 class="font-bold">품질 검수</h4>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div>
-                        <i class="fas fa-smile text-4xl text-gray-400 mb-4"></i>
-                        <h4 class="font-bold text-lg mb-2">얼굴형 분석</h4>
-                        <p class="text-sm text-gray-600">안면 비대칭과 폭을 고려한 프레임 밸런스 조정</p>
-                    </div>
-                    <div>
-                        <i class="fas fa-deaf text-4xl text-gray-400 mb-4"></i>
-                        <h4 class="font-bold text-lg mb-2">귀 높이 맞춤</h4>
-                        <p class="text-sm text-gray-600">양쪽 귀 높낮이 차이를 보완하는 템플(다리) 굴절 셋팅</p>
-                    </div>
-                    <div>
-                        <i class="fas fa-eye text-4xl text-gray-400 mb-4"></i>
-                        <h4 class="font-bold text-lg mb-2">코 모양 반영</h4>
-                        <p class="text-sm text-gray-600">코받침의 각도와 높이를 조절하여 흘러내림 완벽 방지</p>
-                    </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-primary text-2xl font-bold mb-2">03</div>
+                    <h4 class="font-bold">도색 및 개조</h4>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-primary text-2xl font-bold mb-2">04</div>
+                    <h4 class="font-bold">운송 및 납품</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. Booking & Location (예약 및 위치) -->
+    <!-- Customer Section -->
+    <section id="customer" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">Customer Reviews</h2>
+            <div class="w-16 h-1 bg-primary mx-auto"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-light p-6 rounded-2xl border">
+                <img src="https://image.pollinations.ai/prompt/Korean%20businessman%20blue%20container%20posing?width=400&height=400" class="w-20 h-20 rounded-full mx-auto mb-4">
+                <p class="text-sm italic">"공간 피팅이 정교하여 물류 효율이 매우 높아졌습니다."</p>
+            </div>
+            <div class="bg-light p-6 rounded-2xl border">
+                <img src="https://image.pollinations.ai/prompt/Korean%20businesswoman%20red%20container%20posing?width=400&height=400" class="w-20 h-20 rounded-full mx-auto mb-4">
+                <p class="text-sm italic">"까다로운 설비 요구도 완벽히 반영해 주셨습니다."</p>
+            </div>
+            <div class="bg-light p-6 rounded-2xl border">
+                <img src="https://image.pollinations.ai/prompt/Korean%20young%20female%20entrepreneur%20yellow%20container%20posing?width=400&height=400" class="w-20 h-20 rounded-full mx-auto mb-4">
+                <p class="text-sm italic">"트렌디한 사무실로 개조했는데 대만족입니다."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video -->
+    <section id="video" class="py-24 bg-light text-center">
+        <h2 class="text-3xl font-bold mb-16">컨테이너 문의</h2>
+        <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-xl">
+            <div style="padding:56.25% 0 0 0;position:relative;">
+                <iframe src="https://player.vimeo.com/video/1185163223?autoplay=1&muted=1&loop=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inquiry -->
     <section id="booking" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Booking & Location</h2>
-                <div class="w-16 h-1 bg-primary mx-auto"></div>
-                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">사전 예약 시 대기 시간 없이 원활한 상담이 가능합니다.</p>
-            </div>
-
-            <!-- 좌우 2단 레이아웃 -->
             <div class="flex flex-col lg:flex-row gap-12">
-                
-                <!-- 좌측: 예약 폼 및 정보 -->
-                <div class="w-full lg:w-1/2 flex flex-col justify-between">
-                    <div class="bg-light p-8 rounded-2xl shadow-sm">
-                        <h3 class="text-xl font-bold mb-6 text-gray-800">방문 예약하기</h3>
-                        <form onsubmit="event.preventDefault(); alert('예약 신청이 완료되었습니다. 담당자가 확인 후 연락드리겠습니다.');" class="space-y-4">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">이름</label>
-                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow" placeholder="홍길동">
-                            </div>
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">연락처</label>
-                                <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow" placeholder="010-0000-0000">
-                            </div>
-                            <div>
-                                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">방문 희망 일자</label>
-                                <input type="date" id="date" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow">
-                            </div>
-                            <button type="submit" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors mt-4">
-                                예약 신청
-                            </button>
+                <div class="w-full lg:w-1/2">
+                    <div class="bg-light p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-6 text-gray-800">견적 문의 신청</h3>
+                        <form id="inquiryForm" class="space-y-4">
+                            <input type="text" name="company" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary outline-none" placeholder="회사명 / 담당자명">
+                            <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary outline-none" placeholder="연락처">
+                            <select name="type" class="w-full px-4 py-3 rounded-lg border bg-white focus:ring-2 focus:ring-primary outline-none">
+                                <option value="20ft 드라이">20ft 드라이 컨테이너</option>
+                                <option value="40ft 드라이">40ft 드라이 컨테이너</option>
+                                <option value="냉동/냉장">냉동/냉장 컨테이너</option>
+                            </select>
+                            <textarea name="message" rows="4" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary outline-none" placeholder="상세 문의 내용 (납품 지역 등)"></textarea>
+                            <button type="submit" id="submitBtn" class="w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition-all shadow-lg">견적 요청하기</button>
                         </form>
                     </div>
-
-                    <!-- 매장 정보 -->
-                    <div class="mt-8 space-y-4 px-2">
-                        <div class="flex items-center text-gray-700">
-                            <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">매장 연락처</p>
-                                <p class="font-bold text-lg">02-362-4680</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center mr-4">
-                                <i class="far fa-clock"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">운영 시간</p>
-                                <p class="font-bold">평일 09:00 ~ 19:00 (주말 휴무)</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center text-gray-700">
-                            <div class="w-10 h-10 bg-blue-50 text-primary rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">오시는 길</p>
-                                <p class="font-bold">서울시 구로구 디지털로 243</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-                <!-- 우측: 구글맵 iframe -->
-                <div class="w-full lg:w-1/2 h-96 lg:h-auto min-h-[400px] rounded-2xl overflow-hidden shadow-sm border border-gray-200 relative">
-                    <!-- 구글맵 주소 검색 파라미터를 활용한 범용 임베드 -->
-                    <iframe 
-                        src="https://maps.google.com/maps?q=서울시%20구로구%20디지털로%20243&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                        class="absolute inset-0 w-full h-full border-0" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                <div class="w-full lg:w-1/2 h-96 lg:h-auto rounded-2xl overflow-hidden border">
+                    <iframe src="https://maps.google.com/maps?q=서울시%20구로구%20디지털로%20243&t=&z=15&ie=UTF8&iwloc=&output=embed" class="w-full h-full border-0"></iframe>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- 7. Footer (푸터) -->
-    <footer class="bg-dark text-gray-400 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-xl font-bold text-white mb-4">성민안경</h2>
-            <p class="text-sm mb-6">서울시 구로구 디지털로 243 | 대표번호: 02-362-4680</p>
-            <div class="border-t border-gray-700 pt-6">
-                <p class="text-sm">&copy; 2026 성민안경. All rights reserved.</p>
-            </div>
-        </div>
+    <footer class="bg-dark text-gray-400 py-10 text-center">
+        <h2 class="text-xl font-bold text-white mb-2">주식회사 비전컨테이너</h2>
+        <p class="text-sm">&copy; 2026 주식회사 비전컨테이너. All rights reserved.</p>
     </footer>
 
-    <!-- 자바스크립트 기능 구현 -->
     <script>
-        // 1. 모바일 메뉴 토글
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // 모바일 메뉴 항목 클릭 시 메뉴 닫기
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-
-        // 2. 스크롤 시 헤더 그림자 효과 (Sticky Header)
+        // Scroll Effect
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('navbar');
-            if (window.scrollY > 10) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
 
-        // 3. Products 섹션 탭(Tab) 기능 구현
-        function changeTab(tabName) {
-            // 모든 탭 버튼 초기화 (회색 테두리 및 텍스트)
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => {
-                btn.classList.remove('border-primary', 'bg-primary', 'text-white');
-                btn.classList.add('border-gray-200', 'text-gray-500');
+        // Mobile Menu
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.onclick = () => menu.classList.toggle('hidden');
+
+        // Tab System
+        function changeTab(name) {
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.replace('bg-primary', 'bg-white');
+                b.classList.replace('text-white', 'text-gray-500');
+                b.classList.add('border-gray-200');
             });
+            const activeBtn = document.getElementById('tab-' + name);
+            activeBtn.classList.remove('text-gray-500', 'border-gray-200');
+            activeBtn.classList.add('bg-primary', 'text-white', 'border-primary');
 
-            // 클릭된 탭 버튼 활성화 (파란색 배경 및 흰색 텍스트)
-            const activeBtn = document.getElementById('tab-' + tabName);
-            activeBtn.classList.remove('border-gray-200', 'text-gray-500');
-            activeBtn.classList.add('border-primary', 'bg-primary', 'text-white');
-
-            // 모든 탭 콘텐츠 숨기기 및 페이드 아웃 준비
-            const tabPanes = document.querySelectorAll('.tab-pane');
-            tabPanes.forEach(pane => {
-                pane.classList.remove('opacity-100');
-                pane.classList.add('opacity-0');
-                
-                // 트랜지션 시간 후 display: none 적용을 위해 setTimeout 사용
-                setTimeout(() => {
-                    pane.classList.add('hidden');
-                }, 400); // CSS의 transition 속도(0.4s)와 맞춤
+            document.querySelectorAll('.tab-pane').forEach(p => {
+                p.classList.add('hidden');
+                p.classList.remove('opacity-100');
             });
-
-            // 선택된 탭 콘텐츠 표시 및 페이드 인
-            const activePane = document.getElementById('content-' + tabName);
-            setTimeout(() => {
-                activePane.classList.remove('hidden');
-                // 약간의 지연 후 불투명도 조절하여 페이드 인 효과 발생
-                setTimeout(() => {
-                    activePane.classList.remove('opacity-0');
-                    activePane.classList.add('opacity-100');
-                }, 50);
-            }, 400);
+            const activePane = document.getElementById('content-' + name);
+            activePane.classList.remove('hidden');
+            setTimeout(() => activePane.classList.add('opacity-100'), 50);
         }
+
+        // Form Submission Logic
+        const inquiryForm = document.getElementById('inquiryForm');
+        const submitBtn = document.getElementById('submitBtn');
+        // 구글 앱스 스크립트 웹앱 URL (배포 후 받은 URL로 교체됨)
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxABExsZ3677I-ahidvqJ8TQVYZGJL7Xx8zn1ri95wy18rHotaGFf8w953W6eMOe5OR/exec';
+
+        inquiryForm.onsubmit = async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerText = '전송 중...';
+
+            try {
+                // URLSearchParams를 사용하여 표준 인코딩 방식으로 전송 (CORS 우회 최적화)
+                const formData = new FormData(inquiryForm);
+                const params = new URLSearchParams();
+                formData.forEach((value, key) => params.append(key, value));
+
+                // mode: 'no-cors'는 응답을 읽지는 못하지만 데이터 전송은 성공함
+                await fetch(scriptURL, {
+                    method: 'POST',
+                    body: params,
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                });
+
+                // 전송 후 처리
+                alert('견적 요청이 성공적으로 접수되었습니다. 곧 연락드리겠습니다.');
+                inquiryForm.reset();
+            } catch (err) {
+                console.error('Error:', err);
+                alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = '견적 요청하기';
+            }
+        };
     </script>
 </body>
 </html>
