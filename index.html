@@ -1,30 +1,73 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>주식회사 비전컨테이너 | 복음을 실어나르는 회사</title>
+    <title>Vision Container | 유라시아 전문 중고 컨테이너 매매 및 임대</title>
     
-    <!-- Pretendard 폰트 로드 -->
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <!-- 폰트 로드: Meta Optimistic VF의 대안으로 Montserrat 폰트 적용 (300, 400, 500, 700 굵기 명시) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome 아이콘 로드 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind CSS CDN 및 커스텀 설정 -->
+    <!-- Tailwind CSS CDN 및 Meta Commerce 기반 커스텀 설정 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Pretendard', 'sans-serif'],
+                        sans: ['Montserrat', 'Helvetica', 'Arial', 'Noto Sans', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#007BFF', // 신뢰의 블루
-                        secondary: '#C026D3', // 요청하신 자주색 (Magenta)
-                        light: '#F8F9FA',
-                        dark: '#333333',
+                        canvas: '#ffffff',
+                        'surface-soft': '#f7f7f9',
+                        hairline: '#e5e5e5',
+                        'hairline-soft': '#f0f0f0',
+                        'ink-deep': '#1c1e21',
+                        ink: '#4a4a4a',
+                        charcoal: '#65676b',
+                        slate: '#8a8d91',
+                        steel: '#8c8c8c',
+                        stone: '#bcc0c4',
+                        'ink-button': '#000000',
+                        'on-ink-button': '#ffffff',
+                        primary: '#0064e0', // Cobalt Primary
+                        'primary-deep': '#0054bd',
+                        'primary-soft': 'rgba(0, 100, 224, 0.15)',
+                        'fb-blue': '#1877f2',
+                        success: '#0fa336',
+                        warning: '#f4b400',
+                        critical: '#e22718',
+                        'critical-strong': '#cc2014',
+                    },
+                    letterSpacing: {
+                        tight: '-0.16px',
+                        slight: '-0.14px',
+                    },
+                    spacing: {
+                        'xs': '8px',
+                        'sm': '10px',
+                        'md': '12px',
+                        'base': '16px',
+                        'lg': '20px',
+                        'xl': '24px',
+                        'xxl': '32px',
+                        'xxxl': '40px',
+                        'section-sm': '48px',
+                        'section': '64px',
+                        'section-lg': '80px',
+                        'hero': '120px',
+                    },
+                    borderRadius: {
+                        'lg': '8px',
+                        'xl': '16px',
+                        'xxl': '24px',
+                        'xxxl': '32px',
+                        'full': '100px',
                     }
                 }
             }
@@ -34,355 +77,409 @@
     <style>
         html {
             scroll-behavior: smooth;
+            background-color: #ffffff;
         }
-        .tab-pane, .customer-pane {
-            transition: opacity 0.4s ease-in-out;
-        }
-        #navbar {
-            transition: box-shadow 0.3s ease;
-        }
-        .scrolled {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* 갤러리 탭 패턴 애니메이션 */
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         /* 커스텀 메시지 박스 스타일 */
         #status-message {
             display: none;
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            color: white;
+            bottom: 24px;
+            right: 24px;
+            padding: 16px 24px;
+            background-color: #1c1e21;
+            border-radius: 16px;
+            color: #ffffff;
             z-index: 1000;
+            font-weight: 500;
+            font-size: 14px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
     </style>
 </head>
-<body class="font-sans text-gray-800 antialiased bg-white">
+<body class="font-sans text-ink bg-canvas antialiased selection:bg-primary-soft selection:text-primary-deep tracking-tight">
 
     <!-- 상태 메시지 알림창 -->
     <div id="status-message"></div>
 
-    <!-- 1. Header (네비게이션) -->
-    <header id="navbar" class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0">
-                    <a href="#hero" class="text-xl md:text-2xl font-bold text-primary tracking-tight">
-                        주식회사 비전컨테이너
-                    </a>
+    <!-- 1. Top Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 w-full bg-canvas/95 backdrop-blur-md z-50 border-b border-hairline-soft transition-colors duration-300">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-[64px]">
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="https://github.com/tjeoqks4373-byte/images/blob/main/IMG_2957.PNG?raw=true" alt="주식회사 비전컨테이너 로고" class="h-8 w-auto mr-4">
+                    <a href="#hero" class="text-ink-deep font-bold text-[24px] tracking-tight">주식회사 비전컨테이너</a>
                 </div>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-gray-600 hover:text-primary font-medium transition-colors">About</a>
-                    <a href="#business" class="text-gray-600 hover:text-primary font-medium transition-colors">Business</a>
-                    <a href="#services" class="text-gray-600 hover:text-primary font-medium transition-colors">Services</a>
-                    <a href="#customer" class="text-gray-600 hover:text-primary font-medium transition-colors">Customer</a>
-                    <a href="#booking" class="text-gray-600 hover:text-primary font-medium transition-colors">Inquiry</a>
+                
+                <!-- Pill-tab Navigation -->
+                <nav class="hidden md:flex space-x-2 items-center">
+                    <a href="#about" class="button-pill-tab px-[16px] py-[8px] rounded-full border border-hairline text-ink text-[14px] font-bold tracking-slight hover:bg-surface-soft transition-colors">Introduce</a>
+                    <a href="#business" class="button-pill-tab px-[16px] py-[8px] rounded-full border border-hairline text-ink text-[14px] font-bold tracking-slight hover:bg-surface-soft transition-colors">Business</a>
+                    <a href="#global-network" class="button-pill-tab px-[16px] py-[8px] rounded-full border border-hairline text-ink text-[14px] font-bold tracking-slight hover:bg-surface-soft transition-colors">Network</a>
+                    <a href="#services" class="button-pill-tab px-[16px] py-[8px] rounded-full border border-hairline text-ink text-[14px] font-bold tracking-slight hover:bg-surface-soft transition-colors">Services</a>
+                    <!-- Active style simulation for Inquiry -->
+                    <a href="#booking" class="px-[16px] py-[8px] rounded-full bg-ink-deep text-canvas text-[14px] font-bold tracking-slight transition-colors">Inquiry</a>
                 </nav>
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
+                    <button id="mobile-menu-btn" class="text-ink-deep focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" class="block px-3 py-2 text-gray-600 hover:text-primary font-medium">About</a>
-                <a href="#business" class="block px-3 py-2 text-gray-600 hover:text-primary font-medium">Business</a>
-                <a href="#services" class="block px-3 py-2 text-gray-600 hover:text-primary font-medium">Services</a>
-                <a href="#customer" class="block px-3 py-2 text-gray-600 hover:text-primary font-medium">Customer</a>
-                <a href="#booking" class="block px-3 py-2 text-gray-600 hover:text-primary font-medium">Inquiry</a>
+        <!-- Mobile Menu (Drawer style placeholder) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-canvas border-t border-hairline-soft">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#about" class="block text-ink-deep font-bold tracking-slight text-[16px]">Introduce</a>
+                <a href="#business" class="block text-ink-deep font-bold tracking-slight text-[16px]">Business</a>
+                <a href="#global-network" class="block text-ink-deep font-bold tracking-slight text-[16px]">Network</a>
+                <a href="#services" class="block text-ink-deep font-bold tracking-slight text-[16px]">Services</a>
+                <a href="#booking" class="block text-primary font-bold tracking-slight text-[16px]">Inquiry</a>
             </div>
         </div>
     </header>
 
-    <!-- 2. Hero Section -->
-    <section id="hero" class="relative w-full h-screen flex items-center justify-center pt-20">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=1920" alt="수출용 컨테이너 터미널" class="w-full h-full object-cover object-center" />
-            <div class="absolute inset-0 bg-black/60"></div>
-        </div>
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 tracking-tight break-keep">
-                복음을 실어나르는 회사<br />
-                <span class="text-primary font-extrabold mt-2 inline-block">주식회사 비전컨테이너</span>
+    <!-- 2. Hero Section (Text above, large 32px rounded image below) -->
+    <section id="hero" class="w-full pt-[120px] pb-section-lg bg-canvas">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-8 text-center flex flex-col items-center">
+            <!-- Hero Typography -->
+            <h1 class="text-[36px] md:text-[64px] font-medium text-ink-deep leading-[1.16] tracking-tight mb-4 max-w-4xl">
+                유라시아 전문 중고 컨테이너 매매 및 임대
             </h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light break-keep">
+            <p class="text-[20px] md:text-[28px] text-ink font-light leading-[1.21] mb-10 max-w-3xl">
                 신뢰할 수 있는 품질의 중고 수출용·해상용 컨테이너를 합리적인 가격에 제공합니다.
             </p>
-            <a href="#booking" class="inline-block bg-primary text-white font-semibold text-lg px-8 py-4 rounded-full hover:bg-blue-700 transition-all shadow-lg transform hover:-translate-y-1">
-                컨테이너 견적 문의
-            </a>
-        </div>
-    </section>
+            
+            <!-- Dual CTA Pattern (Marketing) -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-section">
+                <!-- Primary Marketing Pill -->
+                <a href="#booking" class="inline-flex items-center justify-center bg-ink-button text-on-ink-button font-bold text-[14px] tracking-slight px-[30px] py-[14px] rounded-full hover:bg-charcoal transition-colors">
+                    Request a quote
+                </a>
+                <!-- Secondary Ghost Pill -->
+                <a href="#business" class="inline-flex items-center justify-center bg-transparent border-2 border-ink-deep text-ink-deep font-bold text-[14px] tracking-slight px-[28px] py-[12px] rounded-full hover:bg-surface-soft transition-colors">
+                    Explore products
+                </a>
+            </div>
 
-    <!-- 3. About Us -->
-    <section id="about" class="py-24 bg-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">About Us</h2>
-            <div class="w-16 h-1 bg-primary mx-auto mb-16"></div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <i class="fas fa-ship text-primary text-3xl mb-6"></i>
-                    <h3 class="text-xl font-bold mb-3">전문 컨설팅</h3>
-                    <p class="text-gray-600 text-sm break-keep">다년간의 해운 네트워크 전문가가 최적의 컨테이너를 상담합니다.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <i class="fas fa-check-double text-primary text-3xl mb-6"></i>
-                    <h3 class="text-xl font-bold mb-3">품질 검수</h3>
-                    <p class="text-gray-600 text-sm break-keep">구조적 안전성과 방수 상태를 철저히 검사하여 납품합니다.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <i class="fas fa-won-sign text-primary text-3xl mb-6"></i>
-                    <h3 class="text-xl font-bold mb-3">투명한 정찰제</h3>
-                    <p class="text-gray-600 text-sm break-keep">유통 거품을 뺀 합리적인 가격으로 고객의 신뢰를 얻습니다.</p>
-                </div>
+            <!-- Full-bleed style product photography within 32px rounding -->
+            <div class="w-full aspect-[16/9] md:aspect-[21/9] rounded-xxxl overflow-hidden relative border border-hairline-soft bg-surface-soft shadow-sm">
+                <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?q=80&w=1470&auto=format&fit=crop" alt="Terminal Containers" class="w-full h-full object-cover object-center" />
             </div>
         </div>
     </section>
 
-    <!-- 4. Business -->
-    <section id="business" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Business</h2>
-                <div class="w-16 h-1 bg-primary mx-auto"></div>
+    <!-- 3. Introduce our company (Feature Icon Row) -->
+    <section id="about" class="py-section-lg bg-canvas">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <h2 class="text-[36px] md:text-[48px] font-medium text-ink-deep mb-section leading-[1.17] text-center">Why choose Vision Container</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-section">
+                <!-- card-icon-feature -->
+                <div class="bg-canvas border border-hairline-soft rounded-xl p-xl flex flex-col items-start">
+                    <div class="w-12 h-12 rounded-full bg-surface-soft flex items-center justify-center mb-6 text-ink-deep">
+                        <i class="fas fa-bullseye text-xl"></i>
+                    </div>
+                    <h4 class="text-[24px] font-medium text-ink-deep mb-3 leading-[1.25]">Business goals</h4>
+                    <p class="text-[16px] text-ink font-normal leading-[1.50] tracking-tight">이익 창출을 넘어 전 세계 선교 단체와 인도주의적 지원을 후원하며, 어려운 이웃의 자립을 돕습니다.</p>
+                </div>
+                <div class="bg-canvas border border-hairline-soft rounded-xl p-xl flex flex-col items-start">
+                    <div class="w-12 h-12 rounded-full bg-surface-soft flex items-center justify-center mb-6 text-ink-deep">
+                        <i class="fas fa-heart text-xl"></i>
+                    </div>
+                    <h4 class="text-[24px] font-medium text-ink-deep mb-3 leading-[1.25]">Business attitude</h4>
+                    <p class="text-[16px] text-ink font-normal leading-[1.50] tracking-tight">인류의 고귀한 생명을 존중하며, 최선의 비즈니스 마인드인 'Business As Mission'을 실천합니다.</p>
+                </div>
+                <div class="bg-canvas border border-hairline-soft rounded-xl p-xl flex flex-col items-start">
+                    <div class="w-12 h-12 rounded-full bg-surface-soft flex items-center justify-center mb-6 text-ink-deep">
+                        <i class="fas fa-globe text-xl"></i>
+                    </div>
+                    <h4 class="text-[24px] font-medium text-ink-deep mb-3 leading-[1.25]">Global expertise</h4>
+                    <p class="text-[16px] text-ink font-normal leading-[1.50] tracking-tight">유라시아 40여 개 거점과 블록 트레인 전문성을 바탕으로 최적의 솔루션을 제공합니다.</p>
+                </div>
             </div>
 
-            <!-- 단일 그리드 레이아웃 -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <!-- 항목 1: 판매 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
-                    <img src="https://images.unsplash.com/photo-1494961104209-3c223057bd26?q=80&w=2002&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-56 object-cover" alt="중고/신조 컨테이너 판매">
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg text-gray-900">중고/신조 컨테이너 판매</h4>
-                    </div>
-                </div>
-                <!-- 항목 2: 임대 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
-                    <img src="https://plus.unsplash.com/premium_photo-1661879449050-069f67e200bd?q=80&w=2022&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-56 object-cover" alt="중고/신조 컨테이너 원웨이 임대">
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg text-gray-900">중고/신조 컨테이너 원웨이 임대</h4>
-                    </div>
-                </div>
-                <!-- 항목 3: 보관 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
-                    <img src="https://images.unsplash.com/photo-1634646809203-f3b4adff9127?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="중고/신조 컨테이너 보관">
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg text-gray-900">중고/신조 컨테이너 보관</h4>
-                    </div>
+            <!-- Company Brochure Showcase -->
+            <div class="w-full bg-surface-soft border border-hairline-soft rounded-xxxl p-md md:p-xl shadow-sm flex flex-col items-center">
+                <div class="w-full bg-canvas rounded-xxl overflow-hidden">
+                    <img src="https://github.com/tjeoqks4373-byte/images/blob/main/%E1%84%85%E1%85%B5%E1%84%91%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A6%E1%86%BA%20%E1%84%91%E1%85%AD%E1%84%8C%E1%85%B5%20%E1%84%83%E1%85%B1%E1%86%BA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%87%E1%85%B5%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%8F%E1%85%A5%E1%86%AB%E1%84%90%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%82%E1%85%A5%E1%84%85%E1%85%B5%E1%84%86%E1%85%B5%E1%84%90%E1%85%B5%E1%84%83%E1%85%B3.jpg?raw=true" alt="비전컨테이너 리플렛 쇼케이스" class="w-full h-auto object-contain" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Services -->
-    <section id="services" class="py-24 bg-light">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-16">Service Process</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- 프로세스 1: 파란색 포인트 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 transition-transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fas fa-comments text-4xl text-blue-500 mb-4"></i>
-                    <div class="text-blue-200 text-3xl font-black mb-2 opacity-80">01</div>
-                    <h4 class="font-bold mb-2">상담 및 견적</h4>
-                    <p class="text-xs text-gray-500">최적 규격 및 수량 제안</p>
-                </div>
-                <!-- 프로세스 2: 에메랄드색 포인트 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 transition-transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fas fa-check-circle text-4xl text-emerald-500 mb-4"></i>
-                    <div class="text-emerald-200 text-3xl font-black mb-2 opacity-80">02</div>
-                    <h4 class="font-bold mb-2">품질 검수</h4>
-                    <p class="text-xs text-gray-500">내/외관 정밀 컨디션 체크</p>
-                </div>
-                <!-- 프로세스 3: 호박색(오렌지/노랑) 포인트 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 transition-transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fas fa-paint-roller text-4xl text-amber-500 mb-4"></i>
-                    <div class="text-amber-200 text-3xl font-black mb-2 opacity-80">03</div>
-                    <h4 class="font-bold mb-2">도색 및 개조</h4>
-                    <p class="text-xs text-gray-500">고객 맞춤형 인테리어 작업</p>
-                </div>
-                <!-- 프로세스 4: 보라색 포인트 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 transition-transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fas fa-truck text-4xl text-purple-500 mb-4"></i>
-                    <div class="text-purple-200 text-3xl font-black mb-2 opacity-80">04</div>
-                    <h4 class="font-bold mb-2">운송 및 납품</h4>
-                    <p class="text-xs text-gray-500">지정 장소 정밀 하역 배송</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. Customer Section -->
-    <section id="customer" class="py-24 bg-white">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Customer Reviews</h2>
-                <div class="w-16 h-1 bg-primary mx-auto"></div>
-                <p class="mt-6 text-gray-600">비전컨테이너와 함께 꿈을 실어나르는 고객님들의 목소리입니다.</p>
+    <!-- 4. Our Business (Photographic feature cards without chrome) -->
+    <section id="business" class="py-section-lg bg-surface-soft">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <div class="text-center mb-section">
+                <h2 class="text-[36px] md:text-[48px] font-medium text-ink-deep leading-[1.17] mb-4">Our business</h2>
+                <p class="text-[18px] text-ink font-normal">Made for logistics. Built for scale.</p>
             </div>
 
-            <!-- 고객 갤러리 탭 버튼 -->
-            <div class="flex justify-center space-x-4 mb-10">
-                <button onclick="changeCustomerTab(0)" class="customer-tab-btn border-b-4 border-primary p-2 opacity-100 transition-all">
-                    <img src="https://image.pollinations.ai/prompt/Korean%20businessman%20blue%20container%20posing?width=150&height=150&nologo=true" class="w-16 h-16 rounded-lg object-cover shadow-sm">
-                </button>
-                <button onclick="changeCustomerTab(1)" class="customer-tab-btn border-b-4 border-transparent p-2 opacity-50 transition-all hover:opacity-100">
-                    <img src="https://image.pollinations.ai/prompt/Korean%20businesswoman%20red%20container%20posing?width=150&height=150&nologo=true" class="w-16 h-16 rounded-lg object-cover shadow-sm">
-                </button>
-                <button onclick="changeCustomerTab(2)" class="customer-tab-btn border-b-4 border-transparent p-2 opacity-50 transition-all hover:opacity-100">
-                    <img src="https://image.pollinations.ai/prompt/Korean%20young%20female%20entrepreneur%20yellow%20container%20posing?width=150&height=150&nologo=true" class="w-16 h-16 rounded-lg object-cover shadow-sm">
-                </button>
-            </div>
-
-            <!-- 고객 상세 후기 콘텐츠 -->
-            <div class="bg-light rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100">
-                <div id="customer-pane-0" class="customer-pane fade-in block">
-                    <div class="flex flex-col md:flex-row items-center gap-8">
-                        <img src="https://image.pollinations.ai/prompt/Korean%20businessman%20blue%20container%20posing?width=400&height=400&nologo=true" class="w-48 h-48 rounded-2xl object-cover shadow-md">
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">김도윤 대표 (물류센터 운영)</h4>
-                            <p class="text-lg text-gray-700 italic leading-relaxed break-keep">"공간 피팅이 정교하여 물류 창고의 적재 효율이 매우 높아졌습니다. 튼튼한 하드웨어 품질과 세심한 상담에 대만족입니다."</p>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- card-feature-photo (Edge-to-edge imagery with NO chrome) -->
+                <div class="bg-canvas rounded-xxxl overflow-hidden relative aspect-square md:aspect-[4/5] shadow-none">
+                    <img src="https://images.unsplash.com/photo-1494961104209-3c223057bd26?q=80&w=2002&auto=format&fit=crop" class="w-full h-full object-cover" alt="판매">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-xxl">
+                        <div class="text-[14px] text-canvas font-bold tracking-slight mb-1 opacity-80">SALES</div>
+                        <h4 class="text-[24px] font-medium text-canvas leading-[1.25]">중고/신조 판매</h4>
                     </div>
                 </div>
-                <div id="customer-pane-1" class="customer-pane fade-in hidden">
-                    <div class="flex flex-col md:flex-row items-center gap-8">
-                        <img src="https://image.pollinations.ai/prompt/Korean%20businesswoman%20red%20container%20posing?width=400&height=400&nologo=true" class="w-48 h-48 rounded-2xl object-cover shadow-md">
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">이지현 사장 (F&B 프랜차이즈)</h4>
-                            <p class="text-lg text-gray-700 italic leading-relaxed break-keep">"까다로운 냉동 설비와 인테리어 요구사항을 완벽히 반영해 주셨습니다. 덕분에 신선한 식재료 보관이 가능해졌습니다."</p>
-                        </div>
+                <div class="bg-canvas rounded-xxxl overflow-hidden relative aspect-square md:aspect-[4/5] shadow-none">
+                    <img src="https://plus.unsplash.com/premium_photo-1661879449050-069f67e200bd?q=80&w=2022&auto=format&fit=crop" class="w-full h-full object-cover" alt="임대">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-xxl">
+                        <div class="text-[14px] text-canvas font-bold tracking-slight mb-1 opacity-80">LEASING</div>
+                        <h4 class="text-[24px] font-medium text-canvas leading-[1.25]">원웨이 임대</h4>
                     </div>
                 </div>
-                <div id="customer-pane-2" class="customer-pane fade-in hidden">
-                    <div class="flex flex-col md:flex-row items-center gap-8">
-                        <img src="https://image.pollinations.ai/prompt/Korean%20young%20female%20entrepreneur%20yellow%20container%20posing?width=400&height=400&nologo=true" class="w-48 h-48 rounded-2xl object-cover shadow-md">
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">박서연 대표 (IT 스타트업)</h4>
-                            <p class="text-lg text-gray-700 italic leading-relaxed break-keep">"트렌디한 사무실로 개조했는데 팀원들 반응이 너무 좋습니다. 감각적인 디자인 제안과 꼼꼼한 마감 처리에 감사드립니다."</p>
-                        </div>
+                <div class="bg-canvas rounded-xxxl overflow-hidden relative aspect-square md:aspect-[4/5] shadow-none">
+                    <img src="https://images.unsplash.com/photo-1634646809203-f3b4adff9127?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="보관">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-xxl">
+                        <div class="text-[14px] text-canvas font-bold tracking-slight mb-1 opacity-80">STORAGE</div>
+                        <h4 class="text-[24px] font-medium text-canvas leading-[1.25]">컨테이너 보관</h4>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. Video Section -->
-    <section id="video" class="py-24 bg-light text-center">
-        <h2 class="text-3xl font-bold mb-16">컨테이너 문의</h2>
-        <div class="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
-            <div style="padding:56.25% 0 0 0;position:relative;">
-                <iframe src="https://player.vimeo.com/video/1185163223?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="컨테이너_구매_영상_제작2"></iframe>
+    <!-- 5. Global Network -->
+    <section id="global-network" class="py-section-lg bg-canvas">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-[36px] md:text-[48px] font-medium text-ink-deep leading-[1.17] mb-6">Global network</h2>
+            <p class="text-[18px] text-ink font-normal mb-section max-w-2xl mx-auto">
+                비전컨테이너는 한국을 중심으로 유라시아 대륙 전역에 걸쳐 신뢰할 수 있는 컨테이너 서비스를 제공하고 있습니다.
+            </p>
+            
+            <div class="w-full bg-surface-soft rounded-xxxl p-xl overflow-hidden border border-hairline-soft">
+                <img src="https://github.com/tjeoqks4373-byte/images/blob/main/Profile%20for%20Map.jpg?raw=true" alt="유라시아 지도" class="w-full h-auto object-contain mix-blend-multiply" />
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Services (Icon Feature Row) -->
+    <section id="services" class="py-section-lg bg-canvas border-t border-hairline-soft">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <h2 class="text-[36px] md:text-[48px] font-medium text-ink-deep leading-[1.17] mb-section text-center">Service process</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-canvas border border-hairline-soft rounded-xl p-xl flex flex-col">
+                    <div class="text-[28px] font-light text-slate mb-4">01</div>
+                    <h4 class="text-[18px] font-bold text-ink-deep mb-2">Consulting</h4>
+                    <p class="text-[14px] text-ink font-normal">최적 규격 및 수량 제안</p>
+                </div>
+                <div class="bg-canvas border border-hairline-soft rounded-xl p-xl flex flex-col">
+                    <div class="text-[28px] font-light text-slate mb-4">02</div>
+                    <h4 class="text-[18px] font-bold text-ink-deep mb-2">Inspection</h4>
+                    <p class="text-[14px] text-ink font-normal">내/외관 정밀 컨디션 체크</p>
+                </div>
+                <div class="bg-canvas border border-hairline-soft rounded-xl p-xl flex flex-col">
+                    <div class="text-[28px] font-light text-slate mb-4">03</div>
+                    <h4 class="text-[18px] font-bold text-ink-deep mb-2">Customizing</h4>
+                    <p class="text-[14px] text-ink font-normal">고객 맞춤형 인테리어 작업</p>
+                </div>
+                <div class="bg-canvas border border-hairline-soft rounded-xl p-xl flex flex-col">
+                    <div class="text-[28px] font-light text-slate mb-4">04</div>
+                    <h4 class="text-[18px] font-bold text-ink-deep mb-2">Delivery</h4>
+                    <p class="text-[14px] text-ink font-normal">지정 장소 정밀 하역 배송</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Customer Reviews (Testimonial Cards) -->
+    <section id="customer" class="py-section-lg bg-surface-soft">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <h2 class="text-[36px] md:text-[48px] font-medium text-ink-deep leading-[1.17] mb-section text-center">Client voices</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-canvas border border-hairline-soft rounded-xl p-xxl flex flex-col">
+                    <div class="w-10 h-10 rounded-full bg-surface-soft overflow-hidden mb-6">
+                        <img src="https://image.pollinations.ai/prompt/Korean%20businessman%20blue%20container%20posing?width=100&height=100&nologo=true" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-[16px] text-ink font-normal leading-[1.50] tracking-tight mb-6 flex-1">
+                        "공간 피팅이 정교하여 물류 창고의 적재 효율이 매우 높아졌습니다. 튼튼한 하드웨어 품질과 세심한 상담에 대만족입니다."
+                    </p>
+                    <div class="text-[14px] text-ink-deep font-bold tracking-slight">김도윤 대표</div>
+                    <div class="text-[12px] text-slate font-normal">Logistics Center</div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-canvas border border-hairline-soft rounded-xl p-xxl flex flex-col">
+                    <div class="w-10 h-10 rounded-full bg-surface-soft overflow-hidden mb-6">
+                        <img src="https://image.pollinations.ai/prompt/Korean%20businesswoman%20red%20container%20posing?width=100&height=100&nologo=true" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-[16px] text-ink font-normal leading-[1.50] tracking-tight mb-6 flex-1">
+                        "까다로운 냉동 설비 요구사항을 완벽히 반영해 주셨습니다. 덕분에 식재료 보관이 매우 안정적입니다."
+                    </p>
+                    <div class="text-[14px] text-ink-deep font-bold tracking-slight">이지현 사장</div>
+                    <div class="text-[12px] text-slate font-normal">F&B Franchise</div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-canvas border border-hairline-soft rounded-xl p-xxl flex flex-col">
+                    <div class="w-10 h-10 rounded-full bg-surface-soft overflow-hidden mb-6">
+                        <img src="https://image.pollinations.ai/prompt/Korean%20young%20female%20entrepreneur%20yellow%20container%20posing?width=100&height=100&nologo=true" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-[16px] text-ink font-normal leading-[1.50] tracking-tight mb-6 flex-1">
+                        "트렌디한 사무실로 개조했는데 팀원들 반응이 너무 좋습니다. 감각적인 디자인 제안과 꼼꼼한 마감 처리에 감사드립니다."
+                    </p>
+                    <div class="text-[14px] text-ink-deep font-bold tracking-slight">박서연 대표</div>
+                    <div class="text-[12px] text-slate font-normal">IT Startup</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Video Section -->
+    <section id="video" class="py-section-lg bg-canvas">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <div class="w-full bg-canvas rounded-xxxl overflow-hidden relative shadow-sm border border-hairline-soft" style="padding-top: 56.25%;">
+                <iframe src="https://player.vimeo.com/video/1185163223?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" class="absolute top-0 left-0 w-full h-full" title="VISION CONTAINER MEDIA"></iframe>
             </div>
             <script src="https://player.vimeo.com/api/player.js"></script>
         </div>
     </section>
 
-    <!-- 8. Inquiry Section -->
-    <section id="booking" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- 9. Inquiry Section (Commerce Checkout Summary Style) -->
+    <section id="booking" class="py-section-lg bg-surface-soft border-t border-hairline-soft">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row gap-12">
-                <div class="w-full lg:w-1/2">
-                    <div class="bg-light p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm">
-                        <h3 class="text-2xl font-bold mb-8 text-gray-800">견적 문의 신청</h3>
-                        <form id="inquiryForm" class="space-y-6">
-                            <input type="text" name="company" required class="w-full px-5 py-4 rounded-xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary outline-none shadow-sm transition-all" placeholder="회사명 / 담당자명">
-                            <input type="tel" name="phone" required class="w-full px-5 py-4 rounded-xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary outline-none shadow-sm transition-all" placeholder="연락처">
-                            <!-- 수정 요청 영역: 관심 품목 드롭다운 메뉴 항목 완벽 동기화 -->
-                            <select name="type" class="w-full px-5 py-4 rounded-xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary outline-none shadow-sm bg-white">
-                                <option value="20FT 드라이 컨테이너">20FT 드라이 컨테이너</option>
-                                <option value="40FT 드라이 컨테이너">40FT 드라이 컨테이너</option>
-                                <option value="40HQ 드라이 컨테이너">40HQ 드라이 컨테이너</option>
-                                <option value="냉동/냉장 컨테이너">냉동/냉장 컨테이너</option>
-                                <option value="특수/개조 컨테이너">특수/개조 컨테이너</option>
-                            </select>
-                            <textarea name="message" rows="4" class="w-full px-5 py-4 rounded-xl border-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary outline-none shadow-sm transition-all" placeholder="상세 문의 내용 (납품 희망 지역 및 요청 사항)"></textarea>
-                            <button type="submit" id="submitBtn" class="w-full bg-primary text-white font-bold py-5 rounded-xl hover:bg-blue-700 transition-all shadow-lg active:scale-95 transform">
-                                견적 요청하기
-                            </button>
-                        </form>
-                        <div class="mt-10 pt-10 border-t border-gray-200">
-                            <p class="text-gray-700 mb-4 flex items-center"><i class="fas fa-map-marker-alt text-primary w-6"></i> 대한민국 서울특별시 구로구 디지털로 300 1282호</p>
-                            <p class="text-gray-700 flex items-center"><i class="fas fa-phone-alt text-primary w-6"></i> 010-4337-3835</p>
+                
+                <!-- Left: Form -->
+                <div class="w-full lg:w-3/5">
+                    <h2 class="text-[36px] font-medium text-ink-deep leading-[1.28] mb-2">Ready to configure?</h2>
+                    <p class="text-[18px] text-ink font-normal mb-8">Tell us your requirements and we'll craft the perfect solution.</p>
+                    
+                    <form id="inquiryForm" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- text-input -->
+                            <input type="text" name="company" required class="w-full bg-canvas border border-hairline text-ink text-[16px] px-md h-[44px] rounded-lg focus:outline-none focus:border-fb-blue focus:border-2 transition-all" placeholder="Company">
+                            <input type="text" name="manager" required class="w-full bg-canvas border border-hairline text-ink text-[16px] px-md h-[44px] rounded-lg focus:outline-none focus:border-fb-blue focus:border-2 transition-all" placeholder="Contact Name">
                         </div>
-                    </div>
+                        <input type="tel" name="phone" required class="w-full bg-canvas border border-hairline text-ink text-[16px] px-md h-[44px] rounded-lg focus:outline-none focus:border-fb-blue focus:border-2 transition-all" placeholder="Phone Number">
+                        
+                        <div class="relative">
+                            <select name="type" class="w-full bg-canvas border border-hairline text-ink text-[16px] px-md h-[44px] rounded-lg focus:outline-none focus:border-fb-blue focus:border-2 transition-all appearance-none cursor-pointer">
+                                <option value="20FT 드라이 컨테이너">20FT Dry Container</option>
+                                <option value="40FT 드라이 컨테이너">40FT Dry Container</option>
+                                <option value="40HQ 드라이 컨테이너">40HQ Dry Container</option>
+                                <option value="냉동/냉장 컨테이너">Reefer Container</option>
+                                <option value="특수/개조 컨테이너">Customized Container</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate">
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        
+                        <textarea name="message" rows="4" class="w-full bg-canvas border border-hairline text-ink text-[16px] px-md py-md rounded-lg focus:outline-none focus:border-fb-blue focus:border-2 transition-all" placeholder="Additional requirements or delivery location"></textarea>
+                    </form>
                 </div>
-                <!-- 구글 지도 -->
-                <div class="w-full lg:w-1/2 h-[500px] lg:h-auto rounded-3xl overflow-hidden border border-gray-100 shadow-inner">
-                    <iframe src="https://maps.google.com/maps?q=서울특별시%20구로구%20디지털로%20300%20지밸리비즈플라자&t=&z=17&ie=UTF8&iwloc=&output=embed" class="w-full h-full border-0" loading="lazy"></iframe>
+                
+                <!-- Right: Sticky Purchase Summary Style -->
+                <div class="w-full lg:w-2/5">
+                    <!-- card-checkout-summary -->
+                    <div class="bg-canvas border border-hairline-soft rounded-xl p-xl shadow-[0px_1px_4px_0px_rgba(20,22,26,0.1)] lg:sticky lg:top-24">
+                        <h4 class="text-[24px] font-medium text-ink-deep mb-4">Summary</h4>
+                        
+                        <div class="h-[200px] w-full bg-surface-soft rounded-lg mb-6 overflow-hidden border border-hairline-soft">
+                            <iframe src="https://maps.google.com/maps?q=서울특별시%20구로구%20디지털로%20300%20지밸리비즈플라자&t=&z=17&ie=UTF8&iwloc=&output=embed" class="w-full h-full border-0 opacity-90" loading="lazy"></iframe>
+                        </div>
+                        
+                        <div class="border-t border-hairline-soft py-4 space-y-2">
+                            <div class="flex justify-between items-center text-[14px]">
+                                <span class="text-ink font-normal">Location</span>
+                                <span class="text-ink-deep font-bold">Seoul, Korea</span>
+                            </div>
+                            <div class="flex justify-between items-center text-[14px]">
+                                <span class="text-ink font-normal">Support</span>
+                                <span class="text-ink-deep font-bold">010-4337-3835</span>
+                            </div>
+                        </div>
+
+                        <!-- Commerce Flow Primary CTA (Cobalt Blue Pill) -->
+                        <button type="submit" form="inquiryForm" id="submitBtn" class="w-full mt-4 bg-primary text-canvas font-bold text-[14px] tracking-slight px-[30px] py-[14px] rounded-full hover:bg-primary-deep transition-colors">
+                            Submit inquiry
+                        </button>
+                        
+                        <p class="text-center mt-4 text-[12px] text-steel font-normal">
+                            We typically respond within 24 hours.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 9. Footer -->
-    <footer class="bg-dark text-gray-400 py-16 text-center">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-white mb-4 tracking-tight">주식회사 비전컨테이너</h2>
-            <p class="text-sm text-gray-300 mb-6 font-light break-keep">
-                하나님이 세상을 이처럼 사랑하사 독생자를 주셨으니 이는 그를 믿는 자마다 멸망하지 않고 영생을 얻게 하려 하심이라 (요한복음 3:16)
-            </p>
-            <p class="text-xs opacity-60 font-light">&copy; 2026 주식회사 비전컨테이너. All rights reserved.</p>
+    <!-- 10. Footer Region -->
+    <footer class="bg-canvas border-t border-hairline-soft pt-section pb-xl">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-section">
+                <!-- Col 1 -->
+                <div>
+                    <h4 class="text-[14px] font-bold text-ink tracking-slight mb-4">Vision Container</h4>
+                    <p class="text-[12px] text-steel leading-[1.5] max-w-xs">
+                        하나님이 세상을 이처럼 사랑하사 독생자를 주셨으니 이는 그를 믿는 자마다 멸망하지 않고 영생을 얻게 하려 하심이라 (요한복음 3:16)
+                    </p>
+                </div>
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="text-[14px] font-bold text-ink tracking-slight mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-[14px] text-steel hover:text-ink-deep transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-[14px] text-steel hover:text-ink-deep transition-colors">Global Network</a></li>
+                        <li><a href="#" class="text-[14px] text-steel hover:text-ink-deep transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="text-[14px] font-bold text-ink tracking-slight mb-4">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-[14px] text-steel hover:text-ink-deep transition-colors">Container Sales</a></li>
+                        <li><a href="#" class="text-[14px] text-steel hover:text-ink-deep transition-colors">One-way Leasing</a></li>
+                        <li><a href="#" class="text-[14px] text-steel hover:text-ink-deep transition-colors">Storage Solutions</a></li>
+                    </ul>
+                </div>
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="text-[14px] font-bold text-ink tracking-slight mb-4">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="text-[14px] text-steel">Seoul, Republic of Korea</li>
+                        <li class="text-[14px] text-steel">010-4337-3835</li>
+                        <li class="text-[14px] text-steel">info@visioncontainer.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-hairline-soft pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-[12px] text-stone font-normal">&copy; 2026 Vision Container Limited. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-[12px] text-stone hover:text-ink transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-[12px] text-stone hover:text-ink transition-colors">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript 기능 구현 -->
+    <!-- JavaScript -->
     <script>
         // 공통 알림 함수
         function showNotification(message, type) {
             const el = document.getElementById('status-message');
             el.innerText = message;
-            el.style.backgroundColor = type === 'success' ? '#10B981' : '#EF4444';
+            // 에러 발생 시 Critical Red로 배경 변경
+            el.style.backgroundColor = type === 'success' ? '#1c1e21' : '#e22718';
             el.style.display = 'block';
             setTimeout(() => { el.style.display = 'none'; }, 4000);
         }
-
-        // 스크롤 헤더 효과
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 20) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
-        });
 
         // 모바일 메뉴 토글
         const menuBtn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         menuBtn.onclick = () => menu.classList.toggle('hidden');
 
-        // 고객 섹션 갤러리 탭 전환
-        function changeCustomerTab(index) {
-            const btns = document.querySelectorAll('.customer-tab-btn');
-            const panes = document.querySelectorAll('.customer-pane');
-
-            btns.forEach((btn, i) => {
-                if(i === index) {
-                    btn.classList.replace('border-transparent', 'border-primary');
-                    btn.classList.replace('opacity-50', 'opacity-100');
-                } else {
-                    btn.classList.replace('border-primary', 'border-transparent');
-                    btn.classList.replace('opacity-100', 'opacity-50');
-                }
-            });
-
-            panes.forEach((pane, i) => {
-                if(i === index) pane.classList.remove('hidden');
-                else pane.classList.add('hidden');
-            });
-        }
-
-        // 견적 요청 기능 (절대 수정하지 않음)
+        // 견적 요청 기능
         const inquiryForm = document.getElementById('inquiryForm');
         const submitBtn = document.getElementById('submitBtn');
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx46nPYZ0MYdvkMvZ2Tm03I-E-45nZyACdgrkul823ahS_pmwHy-LKuahmkjhLLVLzOhw/exec';
@@ -390,7 +487,8 @@
         inquiryForm.onsubmit = async (e) => {
             e.preventDefault();
             submitBtn.disabled = true;
-            submitBtn.innerText = '전송 중입니다...';
+            submitBtn.innerText = 'Processing...';
+            submitBtn.classList.add('opacity-70');
 
             try {
                 const formData = new FormData(inquiryForm);
@@ -404,14 +502,15 @@
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 });
 
-                showNotification('견적 요청이 성공적으로 접수되었습니다.', 'success');
+                showNotification('Your request has been submitted successfully.', 'success');
                 inquiryForm.reset();
             } catch (err) {
                 console.error('Submission Error:', err);
-                showNotification('네트워크 통신 중 오류가 발생했습니다.', 'error');
+                showNotification('A network error occurred. Please try again.', 'error');
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerText = '견적 요청하기';
+                submitBtn.innerText = 'Submit inquiry';
+                submitBtn.classList.remove('opacity-70');
             }
         };
     </script>
